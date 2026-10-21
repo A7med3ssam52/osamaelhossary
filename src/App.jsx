@@ -174,6 +174,7 @@ export default function App() {
         onClose={closeLightbox}
         onPrev={goPrev}
         onNext={goNext}
+        onSelect={openLightbox}
       />
     </>
   );

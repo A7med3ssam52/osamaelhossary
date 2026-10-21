@@ -34,18 +34,17 @@ export default function Gallery({ onOpen }) {
               className="gallery-item reveal"
               style={{ transitionDelay: `${(i % 4) * 70}ms` }}
               onClick={() => onOpen(item)}
-              aria-label={`عرض صورة: ${item.title}`}
+              aria-label={`عرض الصورة ${i + 1} من ${gallery.length}`}
             >
               <img
                 src={item.src}
-                alt={item.title}
+                alt={`صورة ${i + 1} من أعمال د. أسامة الحصري`}
                 width={item.width}
                 height={item.height}
                 loading={i < 4 ? "eager" : "lazy"}
                 decoding="async"
               />
               <span className="gallery-shade" aria-hidden="true" />
-              <span className="gallery-caption" aria-hidden="true">{item.title}</span>
               <span className="gallery-expand" aria-hidden="true">
                 <ExpandIcon />
               </span>

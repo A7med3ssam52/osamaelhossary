@@ -25,12 +25,20 @@ npm run build
 - `instagram`: رابط (اختياري).
 
 ### إضافة/تعديل صور الأعمال
-1. ضع الصور في `public/cases/`.
-2. عدّل `src/data/cases.js` وأضف عنصراً داخل `gallery`:
+1. ضع الصورة الأصلية في `public/cases/`.
+2. أضف نسخة مصغرة (بعرض 200px تقريباً) في `public/cases/thumbs/`.
+3. عدّل `src/data/cases.js` وأضف عنصراً داخل `gallery`:
    ```js
-   { id: 18, src: "/cases/my-photo.jpg", title: "وصف الحالة", width: 960, height: 1280 }
+   {
+     id: 18,
+     src: "/cases/my-photo.jpg",
+     thumb: "/cases/thumbs/my-photo.jpg",
+     width: 960,
+     height: 1280,
+   }
    ```
    `width` و`height` هما أبعاد الصورة الأصلية (لمنع اهتزاز التخطيط أثناء التحميل).
+   الصور تُعرض بدون أي نصوص أو مسميات فوقها؛ العنوان الوحيد الظاهر هو اسم المعرض داخل العارض.
 
 ### صور Doctor
 استبدل `doctor.avatar` في `src/data/doctor.js` (رابط أو path في `public/`).
