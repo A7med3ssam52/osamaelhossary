@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ar">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      html, body { margin: 0; padding: 0; background: #0b3f43; overflow: hidden; }
+      iframe { display: block; width: 100vw; height: 100vh; border: 0; }
+    </style>
+  </head>
+  <body>
+    <iframe id="site" src="/" scrolling="no" title="preview"></iframe>
+    <script>
+      const params = new URLSearchParams(location.search);
+      const frame = document.getElementById("site");
+      let tries = 0;
+
+      function tick() {
+        const doc = frame.contentDocument;
+        const target = doc && doc.getElementById(params.get("scroll") || "cases");
+        if (!target || !doc.querySelector(".gallery-item")) {
+          if (tries++ < 80) setTimeout(tick, 100);
+          return;
+        }
+        target.scrollIntoView({ block: "start" });
+        if (params.get("click") === "gallery") {
+          setTimeout(() => doc.querySelector(".gallery-item")?.click(), 350);
+        }
+      }
+
+      frame.addEventListener("load", () => setTimeout(tick, 250));
+    </script>
+  </body>
+</html>
